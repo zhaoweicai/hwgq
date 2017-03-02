@@ -42,10 +42,10 @@ If you use our code, please cite our paper:
 ### Training HWGQ
 
 You can start training HWGQ-Net. Take AlexNet for example. 
-    ```Shell
-    cd $HWGQ_ROOT/examples/imagenet/alex-hwgq-3ne-clip-poly-320k/
-    sh train_alexnet_imagenet.sh
-    ```
+```Shell
+cd $HWGQ_ROOT/examples/imagenet/alex-hwgq-3ne-clip-poly-320k/
+sh train_alexnet_imagenet.sh
+```
     
 The other network architectures are available, including ResNet-18, ResNet-34, ResNet-50, GoogLeNet and VggNet. To train deeper networks, you need multi-GPU training. If multi-GPU training is not available to you, consider to change the batch size and the training iterations accordingly. You can get very close performance as in our paper.
 
