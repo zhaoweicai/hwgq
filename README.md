@@ -10,8 +10,8 @@ HWGQ-Net is a low-precision neural network with 1-bit binary weights and 2-bit q
 
 ### Results
 
-<p align="center">
-<img src="http://www.svcl.ucsd.edu/projects/hwgq/hwgq_results.png" alt="HWGQ results" width="600px">
+<p align="left">
+<img src="http://www.svcl.ucsd.edu/projects/hwgq/hwgq_results.png" alt="HWGQ results" width="300px">
 </p>
 
 ### Citation
