@@ -1,0 +1,13 @@
+net: "train_val.prototxt"
+test_iter: 1000
+test_interval: 1000
+base_lr: 0.02
+lr_policy: "poly"
+power: 1.0
+display: 100
+max_iter: 320000
+momentum: 0.9
+weight_decay: 0.0005
+snapshot: 100000
+snapshot_prefix: "alexnet"
+solver_mode: GPU

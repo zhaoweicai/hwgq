@@ -1,0 +1,13 @@
+net: "train_val.prototxt"
+#test_iter: 2000
+#test_interval: 2000
+base_lr: 0.01
+lr_policy: "poly"
+power: 1.0
+display: 100
+max_iter: 640000
+momentum: 0.9
+weight_decay: 0.0005
+snapshot: 10000
+snapshot_prefix: "vggnet"
+solver_mode: GPU
