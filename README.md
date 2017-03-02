@@ -6,7 +6,13 @@ This implementation is written by Zhaowei Cai at UC San Diego.
 
 ### Introduction
 
-HWGQ-Net is a low-precision neural network with 1-bit binary weights and 2-bit quantized activations. It can be applied to many popular network architectures, including AlexNet, ResNet, GoogLeNet, VggNet, and achieves closer performance to the corresponding full-precision networks than previously available low-precision networks. Theorectically, HWGQ-Net has ~32x memory and ~32x convoluational computation savings, suggesting that it can be very useful for the deployment of state-of-the-art neural networks in real world applications. 
+HWGQ-Net is a low-precision neural network with 1-bit binary weights and 2-bit quantized activations. It can be applied to many popular network architectures, including AlexNet, ResNet, GoogLeNet, VggNet, and achieves closer performance to the corresponding full-precision networks than previously available low-precision networks. Theorectically, HWGQ-Net has ~32x memory and ~32x convoluational computation savings, suggesting that it can be very useful for the deployment of state-of-the-art neural networks in real world applications. More details can be found in our [paper](https://arxiv.org/abs/1702.00953).
+
+### Results
+
+<p align="center">
+<img src="http://www.svcl.ucsd.edu/projects/hwgq/hwgq_results.png" alt="HWGQ results" width="600px">
+</p>
 
 ### Citation
 
