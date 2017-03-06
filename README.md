@@ -1,6 +1,6 @@
 ## Deep Learning with Low Precision by Half-wave Gaussian Quantization
 
-by Zhaowei Cai, Xiaodong He, Jian Sun and Nuno Vasconcelos
+by [Zhaowei Cai](https://sites.google.com/site/zhaoweicai1989/), [Xiaodong He](https://www.microsoft.com/en-us/research/people/xiaohe/?from=http%3A%2F%2Fresearch.microsoft.com%2F~xiaohe), [Jian Sun](http://www.jiansun.org/) and [Nuno Vasconcelos](http://www.svcl.ucsd.edu/~nuno/).
 
 This implementation is written by Zhaowei Cai at UC San Diego.
 
@@ -16,7 +16,7 @@ HWGQ-Net is a low-precision neural network with 1-bit binary weights and 2-bit q
 
 ### Citation
 
-If you use our code, please cite our paper:
+If you use our code/model/data, please cite our paper:
 
     @inproceedings{cai17hwgq,
       author = {Zhaowei Cai and Xiaodong He and Jian Sun and Nuno Vasconcelos},
@@ -61,13 +61,17 @@ Most of the ablation experiments in the paper can be reproduced. The training sc
 
 ### Models
 
-0. These models are compatible with the provided training\finetuning scripts. The weights of the models here are not binariazed yet. Binarization happens during running.
+0. These models are compatible with the provided training/finetuning scripts. The weights of the models here are not binariazed yet. Binarization happens during running.
 	- [AlexNet_HWGQ] (http://www.svcl.ucsd.edu/projects/hwgq/AlexNet_HWGQ.caffemodel)
-	- [ResNet-101] (http://ethereon.github.io/netscope/#/gist/b21e2aae116dc1ac7b50)
-	- [ResNet-152] (http://ethereon.github.io/netscope/#/gist/d38f3e6091952b45198b)
+	- [ResNet18_HWGQ] (http://www.svcl.ucsd.edu/projects/hwgq/ResNet18_HWGQ.caffemodel)
+	- [ResNet34_HWGQ] (http://www.svcl.ucsd.edu/projects/hwgq/ResNet34_HWGQ.caffemodel)
+	- [ResNet50_HWGQ] (http://www.svcl.ucsd.edu/projects/hwgq/ResNet50_HWGQ.caffemodel)
+	- [GoogleNet_HWGQ] (http://www.svcl.ucsd.edu/projects/hwgq/GoogleNet_HWGQ.caffemodel)
+	- [VggNet_HWGQ] (http://www.svcl.ucsd.edu/projects/hwgq/VggNet_HWGQ.caffemodel)
 
-0. Model files:
-	- ~~MSR download: [link] (http://research.microsoft.com/en-us/um/people/kahe/resnet/models.zip)~~
-	- OneDrive download: [link](https://onedrive.live.com/?authkey=%21AAFW2-FVoxeVRck&id=4006CBB8476FF777%2117887&cid=4006CBB8476FF777)
+0. The weights of the models here are already binariazed, and are compatible with standard convolutions. These models are for deployment.
+	- [AlexNet_HWGQ_BW] (http://www.svcl.ucsd.edu/projects/hwgq/AlexNet_HWGQ_BW.caffemodel)
+	- [ResNet18_HWGQ_BW] (http://www.svcl.ucsd.edu/projects/hwgq/ResNet18_HWGQ_BW.caffemodel)
+	- [VggNet_HWGQ_BW] (http://www.svcl.ucsd.edu/projects/hwgq/VggNet_HWGQ_BW.caffemodel)
 
-If you encounter any issue when using our code, please let me know.
+If you encounter any issue when using our code/model, please let me know.
