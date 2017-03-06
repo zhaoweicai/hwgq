@@ -61,7 +61,7 @@ Most of the ablation experiments in the paper can be reproduced. The training sc
 
 ### Models
 
-0. These models are compatible with the provided training/finetuning scripts. The weights of the models here are not binariazed yet. Binarization happens during running.
+0. These models are compatible with the provided training/finetuning scripts. The weights of the models here are not binarized yet. Binarization happens during running.
 	- [AlexNet_HWGQ] (http://www.svcl.ucsd.edu/projects/hwgq/AlexNet_HWGQ.caffemodel)
 	- [ResNet18_HWGQ] (http://www.svcl.ucsd.edu/projects/hwgq/ResNet18_HWGQ.caffemodel)
 	- [ResNet34_HWGQ] (http://www.svcl.ucsd.edu/projects/hwgq/ResNet34_HWGQ.caffemodel)
@@ -69,7 +69,7 @@ Most of the ablation experiments in the paper can be reproduced. The training sc
 	- [GoogleNet_HWGQ] (http://www.svcl.ucsd.edu/projects/hwgq/GoogleNet_HWGQ.caffemodel)
 	- [VggNet_HWGQ] (http://www.svcl.ucsd.edu/projects/hwgq/VggNet_HWGQ.caffemodel)
 
-0. The weights of the models here are already binariazed, and are compatible with standard convolutions. These models are for deployment.
+0. The weights of the models here are already binarized, and are compatible with standard convolutions. The deploy_bw.prototxt can be found in the corresponding folders. These models can be used for deployment.
 	- [AlexNet_HWGQ_BW] (http://www.svcl.ucsd.edu/projects/hwgq/AlexNet_HWGQ_BW.caffemodel)
 	- [ResNet18_HWGQ_BW] (http://www.svcl.ucsd.edu/projects/hwgq/ResNet18_HWGQ_BW.caffemodel)
 	- [VggNet_HWGQ_BW] (http://www.svcl.ucsd.edu/projects/hwgq/VggNet_HWGQ_BW.caffemodel)
