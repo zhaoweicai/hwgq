@@ -59,5 +59,15 @@ The other network architectures are available, including ResNet-18, ResNet-34, R
 
 Most of the ablation experiments in the paper can be reproduced. The training scripts for running `BW+sign` (`$HWGQ_ROOT/examples/imagenet/alex-sign-step-160k`) in Table 2 and 2-bit non-uniform/uniform `BW+HWGQ` (`$HWGQ_ROOT/examples/imagenet/alex-hwgq-2n-clip-step-160k` and `$HWGQ_ROOT/examples/imagenet/alex-hwgq-3ne-clip-step-160k`) in Table 4 of AlexNet are provided here for reproduction. 
 
+### Models
+
+0. These models are compatible with the provided training\finetuning scripts. The weights of the models here are not binariazed yet. Binarization happens during running.
+	- [AlexNet_HWGQ] (http://www.svcl.ucsd.edu/projects/hwgq/AlexNet_HWGQ.caffemodel)
+	- [ResNet-101] (http://ethereon.github.io/netscope/#/gist/b21e2aae116dc1ac7b50)
+	- [ResNet-152] (http://ethereon.github.io/netscope/#/gist/d38f3e6091952b45198b)
+
+0. Model files:
+	- ~~MSR download: [link] (http://research.microsoft.com/en-us/um/people/kahe/resnet/models.zip)~~
+	- OneDrive download: [link](https://onedrive.live.com/?authkey=%21AAFW2-FVoxeVRck&id=4006CBB8476FF777%2117887&cid=4006CBB8476FF777)
 
 If you encounter any issue when using our code, please let me know.
