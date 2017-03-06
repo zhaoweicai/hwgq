@@ -1,0 +1,493 @@
+name: "VGG"
+input: "data"
+input_shape {
+  dim: 50
+  dim: 3
+  dim: 224
+  dim: 224
+}
+layer {
+  name: "conv1"
+  type: "Convolution"
+  bottom: "data"
+  top: "conv1"
+  convolution_param {
+    num_output: 96
+    pad: 3
+    kernel_size: 7
+    stride: 2
+    bias_term: false
+  }
+}
+layer {
+  name: "relu1"
+  type: "ReLU"
+  bottom: "conv1"
+  top: "conv1"
+}
+layer {
+  name: "pool1"
+  type: "Pooling"
+  bottom: "conv1"
+  top: "pool1"
+  pooling_param {
+    pool: MAX
+    kernel_size: 2
+    stride: 2
+  }
+}
+layer {
+  name: "bn1"
+  type: "BatchNorm"
+  bottom: "pool1"
+  top: "pool1"
+  batch_norm_param {
+    use_global_stats: true
+  }
+}
+layer {
+  name: "qt2_1"
+  type: "Quant"
+  bottom: "pool1"
+  top: "qt2_1"
+  quant_param {
+    forward_func: "hwgq"
+    backward_func: "relu"
+    centers: 0.538 centers: 1.076 centers: 1.614
+    clip_thr: 1.614
+  }
+}
+layer {
+  name: "conv2_1"
+  type: "BinaryConvolution"
+  bottom: "qt2_1"
+  top: "conv2_1"
+  convolution_param {
+    num_output: 256
+    pad: 1
+    kernel_size: 3
+    bias_term: false
+  }
+  binary_convolution_param {
+    use_alpha: true
+  }
+}
+layer {
+  name: "bn2_1"
+  type: "BatchNorm"
+  bottom: "conv2_1"
+  top: "conv2_1"
+  batch_norm_param {
+    use_global_stats: true
+  }
+}
+layer {
+  name: "qt2_2"
+  type: "Quant"
+  bottom: "conv2_1"
+  top: "qt2_2"
+  quant_param {
+    forward_func: "hwgq"
+    backward_func: "relu"
+    centers: 0.538 centers: 1.076 centers: 1.614
+    clip_thr: 1.614
+  }
+}
+layer {
+  name: "conv2_2"
+  type: "BinaryConvolution"
+  bottom: "qt2_2"
+  top: "conv2_2"
+  convolution_param {
+    num_output: 256
+    pad: 1
+    kernel_size: 3
+    bias_term: false
+  }
+  binary_convolution_param {
+    use_alpha: true
+  }
+}
+layer {
+  name: "bn2_2"
+  type: "BatchNorm"
+  bottom: "conv2_2"
+  top: "conv2_2"
+  batch_norm_param {
+    use_global_stats: true
+  }
+}
+layer {
+  name: "qt2_3"
+  type: "Quant"
+  bottom: "conv2_2"
+  top: "qt2_3"
+  quant_param {
+    forward_func: "hwgq"
+    backward_func: "relu"
+    centers: 0.538 centers: 1.076 centers: 1.614
+    clip_thr: 1.614
+  }
+}
+layer {
+  name: "conv2_3"
+  type: "BinaryConvolution"
+  bottom: "qt2_3"
+  top: "conv2_3"
+  convolution_param {
+    num_output: 256
+    pad: 1
+    kernel_size: 3
+    bias_term: false
+  }
+  binary_convolution_param {
+    use_alpha: true
+  }
+}
+layer {
+  name: "pool2"
+  type: "Pooling"
+  bottom: "conv2_3"
+  top: "pool2"
+  pooling_param {
+    pool: MAX
+    kernel_size: 2
+    stride: 2
+  }
+}
+layer {
+  name: "bn2_3"
+  type: "BatchNorm"
+  bottom: "pool2"
+  top: "pool2"
+  batch_norm_param {
+    use_global_stats: true
+  }
+}
+layer {
+  name: "qt3_1"
+  type: "Quant"
+  bottom: "pool2"
+  top: "qt3_1"
+  quant_param {
+    forward_func: "hwgq"
+    backward_func: "relu"
+    centers: 0.538 centers: 1.076 centers: 1.614
+    clip_thr: 1.614
+  }
+}
+layer {
+  name: "conv3_1"
+  type: "BinaryConvolution"
+  bottom: "qt3_1"
+  top: "conv3_1"
+  convolution_param {
+    num_output: 512
+    pad: 1
+    kernel_size: 3
+    bias_term: false
+  }
+  binary_convolution_param {
+    use_alpha: true
+  }
+}
+layer {
+  name: "bn3_1"
+  type: "BatchNorm"
+  bottom: "conv3_1"
+  top: "conv3_1"
+  batch_norm_param {
+    use_global_stats: true
+  }
+}
+layer {
+  name: "qt3_2"
+  type: "Quant"
+  bottom: "conv3_1"
+  top: "qt3_2"
+  quant_param {
+    forward_func: "hwgq"
+    backward_func: "relu"
+    centers: 0.538 centers: 1.076 centers: 1.614
+    clip_thr: 1.614
+  }
+}
+layer {
+  name: "conv3_2"
+  type: "BinaryConvolution"
+  bottom: "qt3_2"
+  top: "conv3_2"
+  convolution_param {
+    num_output: 512
+    pad: 1
+    kernel_size: 3
+    bias_term: false
+  }
+  binary_convolution_param {
+    use_alpha: true
+  }
+}
+layer {
+  name: "bn3_2"
+  type: "BatchNorm"
+  bottom: "conv3_2"
+  top: "conv3_2"
+  batch_norm_param {
+    use_global_stats: true
+  }
+}
+layer {
+  name: "qt3_3"
+  type: "Quant"
+  bottom: "conv3_2"
+  top: "qt3_3"
+  quant_param {
+    forward_func: "hwgq"
+    backward_func: "relu"
+    centers: 0.538 centers: 1.076 centers: 1.614
+    clip_thr: 1.614
+  }
+}
+layer {
+  name: "conv3_3"
+  type: "BinaryConvolution"
+  bottom: "qt3_3"
+  top: "conv3_3"
+  convolution_param {
+    num_output: 512
+    pad: 1
+    kernel_size: 3
+    bias_term: false
+  }
+  binary_convolution_param {
+    use_alpha: true
+  }
+}
+layer {
+  name: "pool3"
+  type: "Pooling"
+  bottom: "conv3_3"
+  top: "pool3"
+  pooling_param {
+    pool: MAX
+    kernel_size: 2
+    stride: 2
+  }
+}
+layer {
+  name: "bn3_3"
+  type: "BatchNorm"
+  bottom: "pool3"
+  top: "pool3"
+  batch_norm_param {
+    use_global_stats: true
+  }
+}
+layer {
+  name: "qt4_1"
+  type: "Quant"
+  bottom: "pool3"
+  top: "qt4_1"
+  quant_param {
+    forward_func: "hwgq"
+    backward_func: "relu"
+    centers: 0.538 centers: 1.076 centers: 1.614
+    clip_thr: 1.614
+  }
+}
+layer {
+  name: "conv4_1"
+  type: "BinaryConvolution"
+  bottom: "qt4_1"
+  top: "conv4_1"
+  convolution_param {
+    num_output: 512
+    pad: 1
+    kernel_size: 3
+    bias_term: false
+  }
+  binary_convolution_param {
+    use_alpha: true
+  }
+}
+layer {
+  name: "bn4_1"
+  type: "BatchNorm"
+  bottom: "conv4_1"
+  top: "conv4_1"
+  batch_norm_param {
+    use_global_stats: true
+  }
+}
+layer {
+  name: "qt4_2"
+  type: "Quant"
+  bottom: "conv4_1"
+  top: "qt4_2"
+  quant_param {
+    forward_func: "hwgq"
+    backward_func: "relu"
+    centers: 0.538 centers: 1.076 centers: 1.614
+    clip_thr: 1.614
+  }
+}
+layer {
+  name: "conv4_2"
+  type: "BinaryConvolution"
+  bottom: "qt4_2"
+  top: "conv4_2"
+  convolution_param {
+    num_output: 512
+    pad: 1
+    kernel_size: 3
+    bias_term: false
+  }
+  binary_convolution_param {
+    use_alpha: true
+  }
+}
+layer {
+  name: "bn4_2"
+  type: "BatchNorm"
+  bottom: "conv4_2"
+  top: "conv4_2"
+  batch_norm_param {
+    use_global_stats: true
+  }
+}
+layer {
+  name: "qt4_3"
+  type: "Quant"
+  bottom: "conv4_2"
+  top: "qt4_3"
+  quant_param {
+    forward_func: "hwgq"
+    backward_func: "relu"
+    centers: 0.538 centers: 1.076 centers: 1.614
+    clip_thr: 1.614
+  }
+}
+layer {
+  name: "conv4_3"
+  type: "BinaryConvolution"
+  bottom: "qt4_3"
+  top: "conv4_3"
+  convolution_param {
+    num_output: 512
+    pad: 1
+    kernel_size: 3
+    bias_term: false
+  }
+  binary_convolution_param {
+    use_alpha: true
+  }
+}
+layer {
+  name: "pool4"
+  type: "Pooling"
+  bottom: "conv4_3"
+  top: "pool4"
+  pooling_param {
+    pool: MAX
+    kernel_size: 2
+    stride: 2
+  }
+}
+layer {
+  name: "bn4_3"
+  type: "BatchNorm"
+  bottom: "pool4"
+  top: "pool4"
+  batch_norm_param {
+    use_global_stats: true
+  }
+}
+layer {
+  name: "qt5"
+  type: "Quant"
+  bottom: "pool4"
+  top: "qt5"
+  quant_param {
+    forward_func: "hwgq"
+    backward_func: "relu"
+    centers: 0.538 centers: 1.076 centers: 1.614
+    clip_thr: 1.614
+  }
+}
+layer {
+  name: "fc5"
+  type: "BinaryInnerProduct"
+  bottom: "qt5"
+  top: "fc5"
+  inner_product_param {
+    num_output: 4096
+    bias_term: false
+  }
+  binary_inner_product_param {
+    use_alpha: true
+  }
+}
+layer {
+  name: "bn5"
+  type: "BatchNorm"
+  bottom: "fc5"
+  top: "fc5"
+  batch_norm_param {
+    use_global_stats: true
+  }
+}
+layer {
+  name: "qt6"
+  type: "Quant"
+  bottom: "fc5"
+  top: "qt6"
+  quant_param {
+    forward_func: "hwgq"
+    backward_func: "relu"
+    centers: 0.538 centers: 1.076 centers: 1.614
+    clip_thr: 1.614
+  }
+}
+layer {
+  name: "fc6"
+  type: "BinaryInnerProduct"
+  bottom: "qt6"
+  top: "fc6"
+  inner_product_param {
+    num_output: 4096
+    bias_term: false
+  }
+  binary_inner_product_param {
+    use_alpha: true
+  }
+}
+layer {
+  name: "bn6"
+  type: "BatchNorm"
+  bottom: "fc6"
+  top: "fc6"
+  batch_norm_param {
+    use_global_stats: true
+  }
+}
+layer {
+  name: "relu6"
+  type: "ReLU"
+  bottom: "fc6"
+  top: "fc6"
+}
+layer {
+  name: "fc7"
+  type: "InnerProduct"
+  bottom: "fc6"
+  top: "fc7"
+  inner_product_param {
+    num_output: 1000
+  }
+}
+layer {
+  name: "prob"
+  type: "Softmax"
+  bottom: "fc7"
+  top: "prob"
+}
