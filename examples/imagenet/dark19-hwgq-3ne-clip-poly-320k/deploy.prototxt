@@ -1,0 +1,737 @@
+name: "DarkNet"
+input: "data"
+input_shape {
+  dim: 50
+  dim: 3
+  dim: 224
+  dim: 224
+}
+layer {
+  name: "conv1"
+  type: "Convolution"
+  bottom: "data"
+  top: "conv1"
+  convolution_param {
+    num_output: 32
+    pad: 1
+    kernel_size: 3
+    bias_term: false
+  }
+}
+layer {
+  name: "pool1"
+  type: "Pooling"
+  bottom: "conv1"
+  top: "pool1"
+  pooling_param {
+    pool: MAX
+    kernel_size: 2
+    stride: 2
+  }
+}
+layer {
+  name: "bn1"
+  type: "BatchNorm"
+  bottom: "pool1"
+  top: "pool1"
+  batch_norm_param {
+    use_global_stats: true
+  }
+}
+layer {
+  name: "qt2"
+  type: "Quant"
+  bottom: "pool1"
+  top: "qt2"
+  quant_param {
+    forward_func: "hwgq"
+    backward_func: "relu"
+    centers: 0.538 centers: 1.076 centers: 1.614
+    clip_thr: 1.614
+  }
+}
+layer {
+  name: "conv2"
+  type: "BinaryConvolution"
+  bottom: "qt2"
+  top: "conv2"
+  convolution_param {
+    num_output: 64
+    pad: 1
+    kernel_size: 3
+    bias_term: false
+  }
+  binary_convolution_param {
+    use_alpha: true
+  }
+}
+layer {
+  name: "pool2"
+  type: "Pooling"
+  bottom: "conv2"
+  top: "pool2"
+  pooling_param {
+    pool: MAX
+    kernel_size: 2
+    stride: 2
+  }
+}
+layer {
+  name: "bn2"
+  type: "BatchNorm"
+  bottom: "pool2"
+  top: "pool2"
+  batch_norm_param {
+    use_global_stats: true
+  }
+}
+layer {
+  name: "qt3_1"
+  type: "Quant"
+  bottom: "pool2"
+  top: "qt3_1"
+  quant_param {
+    forward_func: "hwgq"
+    backward_func: "relu"
+    centers: 0.538 centers: 1.076 centers: 1.614
+    clip_thr: 1.614
+  }
+}
+layer {
+  name: "conv3_1"
+  type: "BinaryConvolution"
+  bottom: "qt3_1"
+  top: "conv3_1"
+  convolution_param {
+    num_output: 128
+    pad: 1
+    kernel_size: 3
+    bias_term: false
+  }
+  binary_convolution_param {
+    use_alpha: true
+  }
+}
+layer {
+  name: "bn3_1"
+  type: "BatchNorm"
+  bottom: "conv3_1"
+  top: "conv3_1"
+  batch_norm_param {
+    use_global_stats: true
+  }
+}
+layer {
+  name: "qt3_2"
+  type: "Quant"
+  bottom: "conv3_1"
+  top: "qt3_2"
+  quant_param {
+    forward_func: "hwgq"
+    backward_func: "relu"
+    centers: 0.538 centers: 1.076 centers: 1.614
+    clip_thr: 1.614
+  }
+}
+layer {
+  name: "conv3_2"
+  type: "BinaryConvolution"
+  bottom: "qt3_2"
+  top: "conv3_2"
+  convolution_param {
+    num_output: 64
+    pad: 1
+    kernel_size: 3
+    bias_term: false
+  }
+  binary_convolution_param {
+    use_alpha: true
+  }
+}
+layer {
+  name: "bn3_2"
+  type: "BatchNorm"
+  bottom: "conv3_2"
+  top: "conv3_2"
+  batch_norm_param {
+    use_global_stats: true
+  }
+}
+layer {
+  name: "qt3_3"
+  type: "Quant"
+  bottom: "conv3_2"
+  top: "qt3_3"
+  quant_param {
+    forward_func: "hwgq"
+    backward_func: "relu"
+    centers: 0.538 centers: 1.076 centers: 1.614
+    clip_thr: 1.614
+  }
+}
+layer {
+  name: "conv3_3"
+  type: "BinaryConvolution"
+  bottom: "qt3_3"
+  top: "conv3_3"
+  convolution_param {
+    num_output: 128
+    pad: 1
+    kernel_size: 3
+    bias_term: false
+  }
+  binary_convolution_param {
+    use_alpha: true
+  }
+}
+layer {
+  name: "pool3"
+  type: "Pooling"
+  bottom: "conv3_3"
+  top: "pool3"
+  pooling_param {
+    pool: MAX
+    kernel_size: 2
+    stride: 2
+  }
+}
+layer {
+  name: "bn3_3"
+  type: "BatchNorm"
+  bottom: "pool3"
+  top: "pool3"
+  batch_norm_param {
+    use_global_stats: true
+  }
+}
+layer {
+  name: "qt4_1"
+  type: "Quant"
+  bottom: "pool3"
+  top: "qt4_1"
+  quant_param {
+    forward_func: "hwgq"
+    backward_func: "relu"
+    centers: 0.538 centers: 1.076 centers: 1.614
+    clip_thr: 1.614
+  }
+}
+layer {
+  name: "conv4_1"
+  type: "BinaryConvolution"
+  bottom: "qt4_1"
+  top: "conv4_1"
+  convolution_param {
+    num_output: 256
+    pad: 1
+    kernel_size: 3
+    bias_term: false
+  }
+  binary_convolution_param {
+    use_alpha: true
+  }
+}
+layer {
+  name: "bn4_1"
+  type: "BatchNorm"
+  bottom: "conv4_1"
+  top: "conv4_1"
+  batch_norm_param {
+    use_global_stats: true
+  }
+}
+layer {
+  name: "qt4_2"
+  type: "Quant"
+  bottom: "conv4_1"
+  top: "qt4_2"
+  quant_param {
+    forward_func: "hwgq"
+    backward_func: "relu"
+    centers: 0.538 centers: 1.076 centers: 1.614
+    clip_thr: 1.614
+  }
+}
+layer {
+  name: "conv4_2"
+  type: "BinaryConvolution"
+  bottom: "qt4_2"
+  top: "conv4_2"
+  convolution_param {
+    num_output: 128
+    pad: 1
+    kernel_size: 3
+    bias_term: false
+  }
+  binary_convolution_param {
+    use_alpha: true
+  }
+}
+layer {
+  name: "bn4_2"
+  type: "BatchNorm"
+  bottom: "conv4_2"
+  top: "conv4_2"
+  batch_norm_param {
+    use_global_stats: true
+  }
+}
+layer {
+  name: "qt4_3"
+  type: "Quant"
+  bottom: "conv4_2"
+  top: "qt4_3"
+  quant_param {
+    forward_func: "hwgq"
+    backward_func: "relu"
+    centers: 0.538 centers: 1.076 centers: 1.614
+    clip_thr: 1.614
+  }
+}
+layer {
+  name: "conv4_3"
+  type: "BinaryConvolution"
+  bottom: "qt4_3"
+  top: "conv4_3"
+  convolution_param {
+    num_output: 256
+    pad: 1
+    kernel_size: 3
+    bias_term: false
+  }
+  binary_convolution_param {
+    use_alpha: true
+  }
+}
+layer {
+  name: "pool4"
+  type: "Pooling"
+  bottom: "conv4_3"
+  top: "pool4"
+  pooling_param {
+    pool: MAX
+    kernel_size: 2
+    stride: 2
+  }
+}
+layer {
+  name: "bn4_3"
+  type: "BatchNorm"
+  bottom: "pool4"
+  top: "pool4"
+  batch_norm_param {
+    use_global_stats: true
+  }
+}
+layer {
+  name: "qt5_1"
+  type: "Quant"
+  bottom: "pool4"
+  top: "qt5_1"
+  quant_param {
+    forward_func: "hwgq"
+    backward_func: "relu"
+    centers: 0.538 centers: 1.076 centers: 1.614
+    clip_thr: 1.614
+  }
+}
+layer {
+  name: "conv5_1"
+  type: "BinaryConvolution"
+  bottom: "qt5_1"
+  top: "conv5_1"
+  convolution_param {
+    num_output: 512
+    pad: 1
+    kernel_size: 3
+    bias_term: false
+  }
+  binary_convolution_param {
+    use_alpha: true
+  }
+}
+layer {
+  name: "bn5_1"
+  type: "BatchNorm"
+  bottom: "conv5_1"
+  top: "conv5_1"
+  batch_norm_param {
+    use_global_stats: true
+  }
+}
+layer {
+  name: "qt5_2"
+  type: "Quant"
+  bottom: "conv5_1"
+  top: "qt5_2"
+  quant_param {
+    forward_func: "hwgq"
+    backward_func: "relu"
+    centers: 0.538 centers: 1.076 centers: 1.614
+    clip_thr: 1.614
+  }
+}
+layer {
+  name: "conv5_2"
+  type: "BinaryConvolution"
+  bottom: "qt5_2"
+  top: "conv5_2"
+  convolution_param {
+    num_output: 256
+    pad: 1
+    kernel_size: 3
+    bias_term: false
+  }
+  binary_convolution_param {
+    use_alpha: true
+  }
+}
+layer {
+  name: "bn5_2"
+  type: "BatchNorm"
+  bottom: "conv5_2"
+  top: "conv5_2"
+  batch_norm_param {
+    use_global_stats: true
+  }
+}
+layer {
+  name: "qt5_3"
+  type: "Quant"
+  bottom: "conv5_2"
+  top: "qt5_3"
+  quant_param {
+    forward_func: "hwgq"
+    backward_func: "relu"
+    centers: 0.538 centers: 1.076 centers: 1.614
+    clip_thr: 1.614
+  }
+}
+layer {
+  name: "conv5_3"
+  type: "BinaryConvolution"
+  bottom: "qt5_3"
+  top: "conv5_3"
+  convolution_param {
+    num_output: 512
+    pad: 1
+    kernel_size: 3
+    bias_term: false
+  }
+  binary_convolution_param {
+    use_alpha: true
+  }
+}
+layer {
+  name: "bn5_3"
+  type: "BatchNorm"
+  bottom: "conv5_3"
+  top: "conv5_3"
+  batch_norm_param {
+    use_global_stats: true
+  }
+}
+layer {
+  name: "qt5_4"
+  type: "Quant"
+  bottom: "conv5_3"
+  top: "qt5_4"
+  quant_param {
+    forward_func: "hwgq"
+    backward_func: "relu"
+    centers: 0.538 centers: 1.076 centers: 1.614
+    clip_thr: 1.614
+  }
+}
+layer {
+  name: "conv5_4"
+  type: "BinaryConvolution"
+  bottom: "qt5_4"
+  top: "conv5_4"
+  convolution_param {
+    num_output: 256
+    pad: 1
+    kernel_size: 3
+    bias_term: false
+  }
+  binary_convolution_param {
+    use_alpha: true
+  }
+}
+layer {
+  name: "bn5_4"
+  type: "BatchNorm"
+  bottom: "conv5_4"
+  top: "conv5_4"
+  batch_norm_param {
+    use_global_stats: true
+  }
+}
+layer {
+  name: "qt5_5"
+  type: "Quant"
+  bottom: "conv5_4"
+  top: "qt5_5"
+  quant_param {
+    forward_func: "hwgq"
+    backward_func: "relu"
+    centers: 0.538 centers: 1.076 centers: 1.614
+    clip_thr: 1.614
+  }
+}
+layer {
+  name: "conv5_5"
+  type: "BinaryConvolution"
+  bottom: "qt5_5"
+  top: "conv5_5"
+  convolution_param {
+    num_output: 512
+    pad: 1
+    kernel_size: 3
+    bias_term: false
+  }
+  binary_convolution_param {
+    use_alpha: true
+  }
+}
+layer {
+  name: "pool5"
+  type: "Pooling"
+  bottom: "conv5_5"
+  top: "pool5"
+  pooling_param {
+    pool: MAX
+    kernel_size: 2
+    stride: 2
+  }
+}
+layer {
+  name: "bn5_5"
+  type: "BatchNorm"
+  bottom: "pool5"
+  top: "pool5"
+  batch_norm_param {
+    use_global_stats: true
+  }
+}
+layer {
+  name: "qt6_1"
+  type: "Quant"
+  bottom: "pool5"
+  top: "qt6_1"
+  quant_param {
+    forward_func: "hwgq"
+    backward_func: "relu"
+    centers: 0.538 centers: 1.076 centers: 1.614
+    clip_thr: 1.614
+  }
+}
+layer {
+  name: "conv6_1"
+  type: "BinaryConvolution"
+  bottom: "qt6_1"
+  top: "conv6_1"
+  convolution_param {
+    num_output: 1024
+    pad: 1
+    kernel_size: 3
+    bias_term: false
+  }
+  binary_convolution_param {
+    use_alpha: true
+  }
+}
+layer {
+  name: "bn6_1"
+  type: "BatchNorm"
+  bottom: "conv6_1"
+  top: "conv6_1"
+  batch_norm_param {
+    use_global_stats: true
+  }
+}
+layer {
+  name: "qt6_2"
+  type: "Quant"
+  bottom: "conv6_1"
+  top: "qt6_2"
+  quant_param {
+    forward_func: "hwgq"
+    backward_func: "relu"
+    centers: 0.538 centers: 1.076 centers: 1.614
+    clip_thr: 1.614
+  }
+}
+layer {
+  name: "conv6_2"
+  type: "BinaryConvolution"
+  bottom: "qt6_2"
+  top: "conv6_2"
+  convolution_param {
+    num_output: 512
+    pad: 1
+    kernel_size: 3
+    bias_term: false
+  }
+  binary_convolution_param {
+    use_alpha: true
+  }
+}
+layer {
+  name: "bn6_2"
+  type: "BatchNorm"
+  bottom: "conv6_2"
+  top: "conv6_2"
+  batch_norm_param {
+    use_global_stats: true
+  }
+}
+layer {
+  name: "qt6_3"
+  type: "Quant"
+  bottom: "conv6_2"
+  top: "qt6_3"
+  quant_param {
+    forward_func: "hwgq"
+    backward_func: "relu"
+    centers: 0.538 centers: 1.076 centers: 1.614
+    clip_thr: 1.614
+  }
+}
+layer {
+  name: "conv6_3"
+  type: "BinaryConvolution"
+  bottom: "qt6_3"
+  top: "conv6_3"
+  convolution_param {
+    num_output: 1024
+    pad: 1
+    kernel_size: 3
+    bias_term: false
+  }
+  binary_convolution_param {
+    use_alpha: true
+  }
+}
+layer {
+  name: "bn6_3"
+  type: "BatchNorm"
+  bottom: "conv6_3"
+  top: "conv6_3"
+  batch_norm_param {
+    use_global_stats: true
+  }
+}
+layer {
+  name: "qt6_4"
+  type: "Quant"
+  bottom: "conv6_3"
+  top: "qt6_4"
+  quant_param {
+    forward_func: "hwgq"
+    backward_func: "relu"
+    centers: 0.538 centers: 1.076 centers: 1.614
+    clip_thr: 1.614
+  }
+}
+layer {
+  name: "conv6_4"
+  type: "BinaryConvolution"
+  bottom: "qt6_4"
+  top: "conv6_4"
+  convolution_param {
+    num_output: 512
+    pad: 1
+    kernel_size: 3
+    bias_term: false
+  }
+  binary_convolution_param {
+    use_alpha: true
+  }
+}
+layer {
+  name: "bn6_4"
+  type: "BatchNorm"
+  bottom: "conv6_4"
+  top: "conv6_4"
+  batch_norm_param {
+    use_global_stats: true
+  }
+}
+layer {
+  name: "qt6_5"
+  type: "Quant"
+  bottom: "conv6_4"
+  top: "qt6_5"
+  quant_param {
+    forward_func: "hwgq"
+    backward_func: "relu"
+    centers: 0.538 centers: 1.076 centers: 1.614
+    clip_thr: 1.614
+  }
+}
+layer {
+  name: "conv6_5"
+  type: "BinaryConvolution"
+  bottom: "qt6_5"
+  top: "conv6_5"
+  convolution_param {
+    num_output: 1024
+    pad: 1
+    kernel_size: 3
+    bias_term: false
+  }
+  binary_convolution_param {
+    use_alpha: true
+  }
+}
+layer {
+  name: "bn6_5"
+  type: "BatchNorm"
+  bottom: "conv6_5"
+  top: "conv6_5"
+  batch_norm_param {
+    use_global_stats: true
+  }
+}
+layer {
+  name: "scale6_5"
+  type: "Scale"
+  bottom: "conv6_5"
+  top: "conv6_5"
+  scale_param {
+    bias_term: true
+  }
+}
+layer {
+  name: "relu6_5"
+  type: "ReLU"
+  bottom: "conv6_5"
+  top: "conv6_5"
+}
+layer {
+  name: "pool6"
+  type: "Pooling"
+  bottom: "conv6_5"
+  top: "pool6"
+  pooling_param {
+    kernel_size: 7
+    stride: 1
+    pool: AVE
+  }
+}
+layer {
+  name: "fc7"
+  type: "InnerProduct"
+  bottom: "pool6"
+  top: "fc7"
+  inner_product_param {
+    num_output: 1000
+  }
+}
+layer {
+  name: "prob"
+  type: "Softmax"
+  bottom: "fc7"
+  top: "prob"
+}
