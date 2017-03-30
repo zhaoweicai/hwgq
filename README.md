@@ -62,16 +62,17 @@ Most of the ablation experiments in the paper can be reproduced. The training sc
 ### Models
 
 0. These models are compatible with the provided training/finetuning scripts. The weights of the models here are not binarized yet. Binarization happens during running.
-	- [AlexNet_HWGQ] (http://www.svcl.ucsd.edu/projects/hwgq/AlexNet_HWGQ.caffemodel)
-	- [ResNet18_HWGQ] (http://www.svcl.ucsd.edu/projects/hwgq/ResNet18_HWGQ.caffemodel)
-	- [ResNet34_HWGQ] (http://www.svcl.ucsd.edu/projects/hwgq/ResNet34_HWGQ.caffemodel)
-	- [ResNet50_HWGQ] (http://www.svcl.ucsd.edu/projects/hwgq/ResNet50_HWGQ.caffemodel)
-	- [GoogleNet_HWGQ] (http://www.svcl.ucsd.edu/projects/hwgq/GoogleNet_HWGQ.caffemodel)
-	- [VggNet_HWGQ] (http://www.svcl.ucsd.edu/projects/hwgq/VggNet_HWGQ.caffemodel)
+	- [AlexNet_HWGQ](http://www.svcl.ucsd.edu/projects/hwgq/AlexNet_HWGQ.caffemodel)
+	- [ResNet18_HWGQ](http://www.svcl.ucsd.edu/projects/hwgq/ResNet18_HWGQ.caffemodel)
+	- [ResNet34_HWGQ](http://www.svcl.ucsd.edu/projects/hwgq/ResNet34_HWGQ.caffemodel)
+	- [ResNet50_HWGQ](http://www.svcl.ucsd.edu/projects/hwgq/ResNet50_HWGQ.caffemodel)
+	- [GoogleNet_HWGQ](http://www.svcl.ucsd.edu/projects/hwgq/GoogleNet_HWGQ.caffemodel)
+	- [VggNet_HWGQ](http://www.svcl.ucsd.edu/projects/hwgq/VggNet_HWGQ.caffemodel)
+	- [DarkNet19_HWGQ](http://www.svcl.ucsd.edu/projects/hwgq/DarkNet19_HWGQ.caffemodel)
 
 0. The weights of the models here are already binarized, and are compatible with standard convolutions. The deploy_bw.prototxt can be found in the corresponding folders. These models can be used for deployment.
-	- [AlexNet_HWGQ_BW] (http://www.svcl.ucsd.edu/projects/hwgq/AlexNet_HWGQ_BW.caffemodel)
-	- [ResNet18_HWGQ_BW] (http://www.svcl.ucsd.edu/projects/hwgq/ResNet18_HWGQ_BW.caffemodel)
-	- [VggNet_HWGQ_BW] (http://www.svcl.ucsd.edu/projects/hwgq/VggNet_HWGQ_BW.caffemodel)
+	- [AlexNet_HWGQ_BW](http://www.svcl.ucsd.edu/projects/hwgq/AlexNet_HWGQ_BW.caffemodel)
+	- [ResNet18_HWGQ_BW](http://www.svcl.ucsd.edu/projects/hwgq/ResNet18_HWGQ_BW.caffemodel)
+	- [VggNet_HWGQ_BW](http://www.svcl.ucsd.edu/projects/hwgq/VggNet_HWGQ_BW.caffemodel)
 
 If you encounter any issue when using our code/model, please let me know.
