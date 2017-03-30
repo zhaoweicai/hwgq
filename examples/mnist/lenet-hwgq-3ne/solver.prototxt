@@ -1,4 +1,4 @@
-net: "examples/mnist/hwgq-lenet.prototxt"
+net: "train_val.prototxt"
 test_iter: 100
 test_interval: 500
 base_lr: 0.01
@@ -10,5 +10,5 @@ weight_decay: 0.0005
 display: 100
 max_iter: 10000
 snapshot: 5000
-snapshot_prefix: "examples/mnist/hwgq-lenet"
+snapshot_prefix: "lenet-hwgq"
 solver_mode: GPU
